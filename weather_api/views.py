@@ -13,4 +13,11 @@ class WeatherApiView(APIView):
         data = request.data
         city_name = data['city']
         conditions = OpenWeather(city_name)
-        return Response({'status':True,'conditions':conditions})
+        return Response({
+    success:true,
+    result: {
+        condition : conditions,
+    },
+    resetList : [],
+    errorMessageKey : Error_Response
+})
